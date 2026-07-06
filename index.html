@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jakub Radlicki - Portfolio</title>
+  <meta name="description" content="Portfolio of Jakub Radlicki - Technical Artist, 3D Artist, Architect, and Developer.">
+  <link rel="icon" type="image/jpeg" href="Portfolio Photos/icon website portfolio.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #050505;
+      --text-main: #a1a1aa;
+      --text-bright: #ffffff;
+      --accent: #e53935;
+      --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color); 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3a3f47; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #5a616c; 
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.lightbox-open { overflow: hidden; }
+
+    ::selection { background: rgba(229, 57, 53, 0.2); color: #fff; }
+
+    .pdf-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .pdf-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Top Bar & Navbar */
+    .top-bar { 
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center; 
+      padding: 15px 40px; 
+      background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05); 
+      font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; 
+    }
+    .top-bar-left { font-weight: 500; color: var(--text-bright); }
+    .top-bar-right { display: flex; gap: 20px; align-items: center; }
+    .top-bar-right a { color: #fff; font-size: 1.2rem; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease; display: inline-block; }
+    .top-bar-right a:hover { color: var(--accent); transform: translateY(-2px); }
+
+    .filter-container {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;
+    }
+
+    .filter-btn {
+      background: none; border: none;
+      color: var(--text-main); font-family: 'Inter', sans-serif; font-weight: 400;
+      font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; transition: var(--transition);
+      position: relative; padding-bottom: 4px;
+    }
+
+    .filter-btn::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+      background: var(--accent); transition: width 0.4s ease;
+    }
+
+    .filter-btn:hover { color: var(--text-bright); }
+    .filter-btn:hover::after { width: 100%; }
+    .filter-btn.active { color: var(--text-bright); }
+    .filter-btn.active::after { width: 100%; }
+
+    /* Hero Section */
+    .hero { padding: 15vh 40px 10vh; max-width: 1400px; margin: 0 auto; text-align: left; }
+    .hero h1 { font-size: 4rem; font-weight: 500; color: var(--text-bright); letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
+    .hero p.subtitle { font-size: 1.1rem; color: var(--text-main); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+    .hero-bio { font-size: 1.25rem; font-weight: 300; color: #d4d4d8; max-width: 800px; margin-bottom: 80px; }
+
+    /* Hero Player & Picker */
+    .hero-player-container { margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .hero-main-player { width: 100%; aspect-ratio: 16/9; background: #000; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .hero-main-player video { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 4px; }
+    
+    .hero-picker { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; }
+    .picker-thumb { width: 150px; aspect-ratio: 16/9; background: #111; cursor: pointer; border: 2px solid transparent; border-radius: 4px; overflow: hidden; opacity: 0.6; transition: all 0.3s ease; flex-shrink: 0; }
+    .picker-thumb:hover { opacity: 0.8; }
+    .picker-thumb.active { opacity: 1; border-color: var(--accent); }
+    .picker-thumb video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+
+    /* Story Sections */
+    main { max-width: 1400px; margin: 0 auto; padding: 40px; display: flex; flex-direction: column; }
+    .story-section { margin-bottom: 180px; opacity: 1; transition: opacity 0.8s ease, transform 0.8s ease; }
+    .story-section.hidden { display: none; }
+    .story-section.hiding { opacity: 0; transform: translateY(30px); }
+
+    .story-header { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; margin-bottom: 60px; align-items: start; }
+    .story-title h2 { 
+      font-size: 2.2rem; 
+      font-weight: 400; 
+      color: var(--text-bright); 
+      letter-spacing: -0.5px; 
+      margin-bottom: 20px; 
+      border-left: 3px solid #ff0033;
+      padding-left: 15px;
+    }
+    .story-tags { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tag { color: var(--text-main); font-size: 0.75rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 40px; }
+    
+    .story-narrative { font-size: 1.15rem; font-weight: 300; color: var(--text-main); }
+    .story-narrative p { margin-bottom: 20px; }
+    .story-narrative p:last-child { margin-bottom: 0; }
+    .story-narrative strong { color: var(--text-bright); font-weight: 400; }
+
+    /* Elegant Grid */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+    .gallery-item { position: relative; overflow: hidden; background: #0a0a0a; cursor: pointer; border-radius: 4px; }
+    .gallery-item img, .gallery-item video { 
+      width: 100%; height: 100%; object-fit: cover; display: block; 
+      transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.8s ease; filter: brightness(0.85) grayscale(20%); pointer-events: none;
+    }
+    .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.04); filter: brightness(1) grayscale(0%); }
+    .overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+    .gallery-item:hover .overlay { opacity: 1; }
+    .overlay-title { font-size: 0.9rem; color: #fff; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+    .empty-state { text-align: center; padding: 100px; color: var(--text-muted); font-size: 1.2rem; display: none; font-weight: 300; }
+
+    /* Lightbox & Comments Sidebar */
+    .lightbox {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;
+      background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
+      display: flex; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    
+    .lb-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: #fff; cursor: pointer; z-index: 1010; background: none; border: none; line-height: 1; padding: 10px; }
+    
+    .lb-content { display: flex; width: 100%; height: 100%; }
+    .lb-media-container { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; padding: 40px; }
+    .lb-media-container img, .lb-media-container video { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border-radius: 4px; }
+    
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 20px 15px; cursor: pointer; transition: background 0.3s ease; backdrop-filter: blur(5px); border-radius: 4px; }
+    .lb-nav:hover { background: rgba(255,255,255,0.2); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+
+    .lb-sidebar {
+      width: 400px; background: #0a0a0a; border-left: 1px solid rgba(255,255,255,0.05);
+      display: flex; flex-direction: column; padding: 30px;
+    }
+    
+    .lb-title { font-size: 1.5rem; font-weight: 400; color: #fff; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    
+    .lb-comments-list { flex: 1; overflow-y: auto; margin-bottom: 20px; padding-right: 10px; }
+    .comment { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .comment-email { font-size: 0.8rem; color: var(--accent); margin-bottom: 5px; font-weight: 500; }
+    .comment-text { font-size: 0.95rem; color: var(--text-main); font-weight: 300; }
+    .no-comments { font-size: 0.9rem; color: #555; font-style: italic; }
+
+    .lb-comment-form { display: flex; flex-direction: column; gap: 10px; }
+    .lb-comment-form input, .lb-comment-form textarea {
+      background: #111; border: 1px solid rgba(255,255,255,0.1); color: #fff;
+      padding: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; border-radius: 4px;
+    }
+    .lb-comment-form textarea { resize: vertical; min-height: 80px; }
+    .lb-comment-form button {
+      background: var(--text-bright); color: #000; border: none; padding: 12px; font-weight: 500;
+      cursor: pointer; border-radius: 4px; transition: background 0.3s ease;
+    }
+    .lb-comment-form button:hover { background: #ddd; }
+
+    /* Sketch Dropdowns */
+    .sketch-dropdown { margin-bottom: 20px; background: rgba(255,255,255,0.02); border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); }
+    .sketch-dropdown summary { padding: 20px; font-size: 1.1rem; color: var(--text-bright); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+    .sketch-dropdown summary::-webkit-details-marker { display: none; }
+    .sketch-dropdown summary::after { content: '+'; font-size: 1.5rem; color: var(--accent); transition: transform 0.3s ease; font-weight: 300; }
+    .sketch-dropdown[open] summary::after { content: '−'; }
+    .sketch-dropdown .dropdown-content { padding: 0 20px 20px 20px; }
+
+    /* Footer */
+    footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 80px 40px; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
+    .footer-left h2 { font-size: 2rem; font-weight: 400; color: var(--text-bright); margin-bottom: 10px; }
+    .footer-left p { font-size: 1rem; color: var(--text-main); font-weight: 300; margin-bottom: 20px; max-width: 400px; }
+    .footer-left a { color: var(--accent); text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease; }
+    .footer-left a:hover { color: #fff; }
+    .footer-links { display: flex; flex-direction: column; gap: 15px; }
+    .footer-links h3 { font-size: 0.8rem; letter-spacing: 2px; color: var(--text-main); margin-bottom: 10px; }
+    .footer-links a { color: var(--text-bright); text-decoration: none; font-size: 1rem; font-weight: 300; transition: opacity 0.3s ease; }
+    .footer-links a:hover { opacity: 0.6; }
+
+    @media (max-width: 1024px) {
+      .lb-content { flex-direction: column; }
+      .lb-sidebar { width: 100%; height: 40vh; border-left: none; border-top: 1px solid rgba(255,255,255,0.05); }
+      .lb-media-container { height: 60vh; }
+      .story-header { grid-template-columns: 1fr; gap: 30px; }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { flex-direction: column; gap: 15px; padding: 15px 20px; text-align: center; }
+      .top-bar-right { flex-wrap: wrap; justify-content: center; }
+      .filter-container { gap: 15px; }
+      
+      .hero { padding: 8vh 20px 5vh; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero-bio { font-size: 1.1rem; margin-bottom: 40px; }
+      
+      main { padding: 20px; }
+      .story-section { margin-bottom: 100px; }
+      .story-title h2 { font-size: 1.8rem; }
+      
+      .gallery { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      
+      .sketch-dropdown summary { padding: 15px; font-size: 1rem; }
+      .sketch-dropdown .dropdown-content { padding: 0 15px 15px 15px; }
+      
+      footer { padding: 40px 20px; gap: 30px; }
+      .footer-left h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-left">Jakub Radlicki - Portfolio</div>
+    <nav class="filter-container" id="filter-container">
+      <button class="filter-btn active" data-filter="all">Selected Works</button>
+      <button class="filter-btn" data-filter="tech-artist">Technical Artist</button>
+      <button class="filter-btn" data-filter="3d-artist">3D Artist</button>
+      <button class="filter-btn" data-filter="environment-artist">Environment Artist and Architect</button>
+      <button class="filter-btn" data-filter="motion-graphics">Motion Graphics</button>
+    </nav>
+    <div class="top-bar-right">
+      <a href="mailto:architecturedesigns.pl@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/jakub-radlicki/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://www.artstation.com/jakub_radlicki" target="_blank" title="ArtStation"><i class="fa-brands fa-artstation"></i></a>
+      <a href="https://www.instagram.com/p0rt40lio/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <h1>Jakub Radlicki</h1>
+    <p class="subtitle">Technical Artist & Architect</p>
+    <div class="hero-bio">
+      <p>I am a strategic problem solver focused on unblocking creative teams. Originally studying Architecture, I taught myself technical art, graphics programming, and pipeline automation. I dive into the deep end—whether building standalone rendering engines from scratch in C++ or setting up unrestricted automations. I specialize in taking complex shader math and explaining it simply, pushing the limits of real-time performance and visual fidelity.</p>
+    </div>
+    
+    <div class="hero-player-container">
+      <div class="hero-main-player">
+        <!-- Native controls enabled for true full screen -->
+        <video id="hero-main-video" autoplay loop muted playsinline controls src="AdvancedLocomotionSystem.mp4"></video>
+      </div>
+      <div class="hero-picker" id="hero-picker">
+        <div class="picker-thumb active" data-src="AdvancedLocomotionSystem.mp4">
+          <video autoplay loop muted playsinline src="AdvancedLocomotionSystem.mp4"></video>
+        </div>
+        <div class="picker-thumb" data-src="CadScapeModeler.mp4">
+          <video autoplay loop muted playsinline src="CadScapeModeler.mp4"></video>
+        </div>
+        <div class="picker-thumb" data-src="AllCombinedBlender.mp4">
+          <video autoplay loop muted playsinline src="AllCombinedBlender.mp4"></video>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PROJECT 1 -->
+    <section class="story-section" data-categories="tech-artist,environment-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Procedural Generation & Automation</h2><div class="story-tags"><span class="tag">Technical Artist</span><span class="tag">Environment Artist and Architect</span></div></div>
+        <div class="story-narrative"><p><strong>Scaling environments requires smart tools, not manual labor.</strong> I scripted out procedural generation tools using Python and Geometry Nodes to completely automate structural modeling tasks. By applying my architectural background to game engines, I ensure structural integrity in randomized assets.</p><p>I also set up logic-driven batch rendering pipelines that automatically swap out materials and cameras for hundreds of meshes, saving studios countless hours of manual iteration.</p></div>
+      </div>
+      <div class="gallery">
+        <!-- Featured Animation -->
+        <div class="gallery-item"><video autoplay loop muted playsinline src="CadScapeModeler.mp4"></video><div class="overlay"><div class="overlay-title">CadScape Modeler</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/tile maker 4.png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Tile Generator Tool</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/container 1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Parametric Container Generation</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/stairs (2).png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Stairway Algorithms</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/furniture.png" loading="lazy"><div class="overlay"><div class="overlay-title">Modular Furniture Toolset</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/rings/batch ring rendering.png" loading="lazy"><div class="overlay"><div class="overlay-title">Programmatic Batch Output Grid</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/rings/2.3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automated Material Instancing</div></div></div>
+      </div>
+    </section>
+
+    <!-- PROJECT 2 -->
+    <section class="story-section" data-categories="tech-artist,motion-graphics,environment-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Real-Time FX & Engine Architecture</h2><div class="story-tags"><span class="tag">Technical Artist</span><span class="tag">Motion Graphics</span><span class="tag">Environment Artist and Architect</span></div></div>
+        <div class="story-narrative"><p><strong>Pushing real-time limits.</strong> I built a custom infinite ocean shader that handles overwater and underwater transitions seamlessly. I regularly piece together complex mathematical shaders using RVT blending, Parallax Occlusion Mapping (POM), and frustum-culling to keep frame rates high.</p><p>To truly understand rendering pipelines, I wrote my own standalone rendering engine from scratch using C++ and Vulkan. This low-level knowledge directly translates into highly optimized UE5 Niagara simulations and fluid dynamics.</p></div>
+      </div>
+      <div class="gallery">
+        <!-- Featured Animation -->
+        <div class="gallery-item"><video autoplay loop muted playsinline src="AdvancedLocomotionSystem.mp4"></video><div class="overlay"><div class="overlay-title">Advanced Locomotion System</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/unreal projects/sim ue5 combined.png" loading="lazy"><div class="overlay"><div class="overlay-title">Niagara Simulation Compilation</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/unreal projects/sim ue5 all.png" loading="lazy"><div class="overlay"><div class="overlay-title">Advanced Particle Behaviors</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/water/water 1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Advanced Water Simulation</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/water/water 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">Wave Propagation & Foam</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/unreal projects/fake subsurface scattering.png" loading="lazy"><div class="overlay"><div class="overlay-title">Custom Subsurface Scattering Shader</div></div></div>
+      </div>
+    </section>
+
+    <!-- PROJECT 3 -->
+    <section class="story-section" data-categories="tech-artist,3d-artist,environment-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Mesh Optimization & Topology</h2><div class="story-tags"><span class="tag">Technical Artist</span><span class="tag">3D Artist</span><span class="tag">Environment Artist and Architect</span></div></div>
+        <div class="story-narrative"><p>Here's a look at my hard-surface workflows and optimization process. I took a massive, heavy photogrammetry scan and aggressively baked it down from 50 million polygons to a super lightweight 35k mesh, keeping the silhouette intact so it actually runs well in-engine.</p></div>
+      </div>
+      <div class="gallery" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="gallery-item"><img src="Portfolio Photos/optimized mesh preview/mesh optimization 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">High-Poly Undercarriage</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/optimized mesh preview/mesh optimization 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Optimized Wireframe</div></div></div>
+      </div>
+      <div class="gallery" style="grid-template-columns: repeat(2, 1fr); margin-top: 20px;">
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website wireframe 1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Watch Wireframe 1</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website wireframe 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">Watch Wireframe 2</div></div></div>
+        <div class="gallery-item"><img src="s0001.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automotive Render 1</div></div></div>
+        <div class="gallery-item"><img src="s0002.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automotive Render 2</div></div></div>
+      </div>
+    </section>
+
+    <!-- PROJECT 4 -->
+    <section class="story-section" data-categories="motion-graphics">
+      <div class="story-header">
+        <div class="story-title"><h2>Motion Graphics & Animation</h2><div class="story-tags"><span class="tag">Motion Graphics</span></div></div>
+        <div class="story-narrative"><p><strong>Bringing designs to life through motion.</strong> I specialize in creating high-quality, physics-driven animations and motion graphics for commercial presentations. Whether it's complex product assembly animations or realistic fluid buoyancy, I focus on smooth, physically accurate motion.</p></div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated diamond ring assembly.mov"></video><div class="overlay"><div class="overlay-title">Diamond Ring Assembly</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated heating mat assembly.mp4"></video><div class="overlay"><div class="overlay-title">Heating Mat Assembly</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated website presentation on laptop.mp4"></video><div class="overlay"><div class="overlay-title">Website Presentation</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated weighing scale.mp4"></video><div class="overlay"><div class="overlay-title">Weighing Scale Animation</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated excel table.mov"></video><div class="overlay"><div class="overlay-title">Animated Excel Table</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated water with boat buoyancy.mkv"></video><div class="overlay"><div class="overlay-title">Water Buoyancy Physics</div></div></div>
+      </div>
+    </section>
+
+    <!-- PROJECT 5 -->
+    <section class="story-section" data-categories="3d-artist,motion-graphics">
+      <div class="story-header">
+        <div class="story-title"><h2>Product Design</h2><div class="story-tags"><span class="tag">3D Artist</span><span class="tag">Motion Graphics</span></div></div>
+        <div class="story-narrative"><p><strong>From abstract concepts to commercial deliverables.</strong> A recent highlight includes modeling, lighting, and rendering photorealistic luxury watches and vehicles for commercial motion graphics spots, ensuring every reflection and surface imperfection sold the realism.</p></div>
+      </div>
+      <div class="gallery">
+        <!-- Featured Animation -->
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated diamond ring assembly.mov"></video><div class="overlay"><div class="overlay-title">Diamond Ring Animation</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website  preview 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Photoreal Render</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website  preview 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Macro Detail</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Material Shading</div></div></div>
+        <div class="gallery-item"><img src="sf1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Hard Surface Vehicle Modeling</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/rings/Bez nazwy (4).png" loading="lazy"><div class="overlay"><div class="overlay-title">Commercial Render Output</div></div></div>
+      </div>
+    </section>
+
+    <!-- PROJECT 6 -->
+    <section class="story-section" data-categories="3d-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Sculpting</h2><div class="story-tags"><span class="tag">3D Artist</span></div></div>
+        <div class="story-narrative"><p><strong>Organic forms and character concepts.</strong> Working as a Contract 3D Artist, I handled high-end interior layouts, sculpted organic character concepts, and executed extreme-detail hard surface modeling for visualizations.</p></div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item"><img src="Portfolio Photos/sculptures/balrogfinalversionz.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">High-Poly Balrog Sculpt</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/sculptures/dragon.png" loading="lazy"><div class="overlay"><div class="overlay-title">Dragon Concept Sculpt</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/sculptures/arc (2020_11_15 21_27_19 UTC).png" loading="lazy"><div class="overlay"><div class="overlay-title">Triumphal Arc Concept</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/sculptures/inbound3761064970014850269.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Organic Creature Detailing</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/sculptures/Azir Sculpture.png" loading="lazy"><div class="overlay"><div class="overlay-title">Azir Sculpture</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/sculptures/Cthulu Sculpture.png" loading="lazy"><div class="overlay"><div class="overlay-title">Cthulu Sculpture</div></div></div>
+      </div>
+    </section>
+    
+    <!-- PROJECT 7 -->
+    <section class="story-section" data-categories="environment-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Architectural Studies</h2><div class="story-tags"><span class="tag">Environment Artist and Architect</span></div></div>
+        <div class="story-narrative"><p><strong>Precision and urban scale.</strong> My formal background in Architecture allows me to bridge the gap between creative design and rigorous technical documentation. This includes full-scale urban layout planning, precise CAD drafting, and comprehensive architectural project development.</p></div>
+      </div>
+      <div class="pdf-container" id="pdf-viewer" style="width: 100%; height: 80vh; margin-top: 40px; border-radius: 4px; overflow-y: scroll; overflow-x: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); background: #111;">
+        <img src="Portfolio Photos/pdf_pages/page_001.jpg" style="width: 100%; display: block;">
+        <img src="Portfolio Photos/pdf_pages/page_002.jpg" style="width: 100%; display: block;">
+        <img src="Portfolio Photos/pdf_pages/page_003.jpg" style="width: 100%; display: block;">
+        <img src="Portfolio Photos/pdf_pages/page_004.jpg" style="width: 100%; display: block;">
+      </div>
+    </section>
+
+    <!-- PROJECT 8 -->
+    <section class="story-section" data-categories="environment-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Fast Sketches</h2><div class="story-tags"><span class="tag">Environment Artist and Architect</span></div></div>
+        <div class="story-narrative"><p><strong>Rapid iteration and conceptualization.</strong> Capturing an idea quickly on paper is often the most important step before moving to digital tools. Clients and professors have consistently highlighted my ability to rapid-draft complex concepts—whether I am locking down the scale and usability of an architectural layout, iterating on character designs, or exploring abstract forms.</p></div>
+      </div>
+      
+      <details class="sketch-dropdown" open>
+        <summary>Environment Art</summary>
+        <div class="dropdown-content">
+          <div class="gallery">
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch environment design.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Environment Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch environment design (2).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Environment Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch environment design (3).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Environment Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch environment design (4).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Environment Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch environment design (5).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Environment Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch environment design (6).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Environment Design</div></div></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="sketch-dropdown">
+        <summary>Structural Design</summary>
+        <div class="dropdown-content">
+          <div class="gallery">
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch structural design (1).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Structural Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch structural design (2).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Structural Design</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch structural design (3).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Structural Design</div></div></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="sketch-dropdown">
+        <summary>Abstract</summary>
+        <div class="dropdown-content">
+          <div class="gallery">
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch abstract.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Abstract Sketch</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch abstract (2).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Abstract Sketch</div></div></div>
+            <div class="gallery-item"><img src="Portfolio Photos/sketches/sketch abstract (3).jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Abstract Sketch</div></div></div>
+          </div>
+        </div>
+      </details>
+
+    </section>
+
+    <!-- PROJECT 9 -->
+    <section class="story-section" data-categories="environment-artist">
+      <div class="story-header">
+        <div class="story-title"><h2>Interior Design</h2><div class="story-tags"><span class="tag">Environment Artist and Architect</span></div></div>
+        <div class="story-narrative"><p><strong>Spatial flow and functional aesthetics.</strong> Leveraging my architectural background, I design comprehensive interior layouts that focus on spatial flow, lighting, and materiality. These spaces are constructed to be both visually compelling and highly functional, bringing a high degree of realism to environment art.</p></div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.1.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 1</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 2</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 3</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Layout</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Visualization</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Space Planning</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Material Study</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr4.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Render</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr5.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 5</div></div></div>
+      </div>
+    </section>
+    
+    <div id="empty-state" class="empty-state">No selected works match this category.</div>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <h2>Let's build something incredible.</h2>
+      <p>Available for freelance opportunities and full-time technical art roles.</p>
+      <a href="mailto:architecturedesigns.pl@gmail.com">architecturedesigns.pl@gmail.com</a>
+    </div>
+    <div class="footer-links">
+      <h3>SOCIALS</h3>
+      <a href="https://www.linkedin.com/in/jakub-radlicki/" target="_blank">LinkedIn</a>
+      <a href="https://www.artstation.com/jakub_radlicki" target="_blank">ArtStation</a>
+      <a href="https://www.instagram.com/p0rt40lio/" target="_blank">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX & COMMENTS -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lb-close">&times;</button>
+    <div class="lb-content">
+      <div class="lb-media-container" id="lb-media-container">
+        <button class="lb-nav lb-prev" id="lb-prev">&#10094;</button>
+        <!-- Media inserted here -->
+        <button class="lb-nav lb-next" id="lb-next">&#10095;</button>
+      </div>
+      <div class="lb-sidebar">
+        <h3 class="lb-title" id="lb-title">Project Details</h3>
+        <div class="lb-comments-list" id="lb-comments-list">
+          <!-- Comments inserted here -->
+        </div>
+        <form class="lb-comment-form" id="lb-comment-form">
+          <input type="email" id="comment-email" placeholder="Your Email" required>
+          <textarea id="comment-text" placeholder="Add a comment..." required></textarea>
+          <button type="submit">Post Comment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Filter Logic
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const sections = document.querySelectorAll('.story-section');
+      const emptyState = document.getElementById('empty-state');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Custom 1.5s smooth scroll to top
+          const startPosition = window.pageYOffset;
+          const startTime = performance.now();
+          const duration = 1500;
+
+          function easeInOutCubic(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t * t + b;
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+          }
+
+          function animation(currentTime) {
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutCubic(timeElapsed, startPosition, -startPosition, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) {
+              requestAnimationFrame(animation);
+            } else {
+              window.scrollTo(0, 0);
+            }
+          }
+          if (startPosition > 0) requestAnimationFrame(animation);
+
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filterValue = btn.getAttribute('data-filter');
+          let visibleCount = 0;
+          
+          const heroSection = document.querySelector('.hero');
+          if (heroSection) {
+            if (filterValue === 'all' || filterValue === 'tech-artist') {
+              heroSection.style.display = 'block';
+            } else {
+              heroSection.style.display = 'none';
+            }
+          }
+
+          sections.forEach(section => {
+            const categories = section.getAttribute('data-categories').split(',');
+            if (filterValue === 'all' || categories.includes(filterValue)) {
+              
+              // Push the section to the top if its primary category matches the filter
+              if (filterValue !== 'all' && categories[0] === filterValue) {
+                section.style.order = "-1";
+              } else {
+                section.style.order = "0";
+              }
+
+              section.classList.remove('hiding');
+              setTimeout(() => { section.classList.remove('hidden'); }, 10);
+              visibleCount++;
+            } else {
+              section.classList.add('hiding');
+              setTimeout(() => { if (section.classList.contains('hiding')) section.classList.add('hidden'); }, 800);
+            }
+          });
+          if (visibleCount === 0) { setTimeout(() => { emptyState.style.display = 'block'; }, 800); } 
+          else { emptyState.style.display = 'none'; }
+        });
+      });
+
+      // Hero Picker Logic
+      const heroMainVideo = document.getElementById('hero-main-video');
+      const pickerThumbs = document.querySelectorAll('.picker-thumb');
+      
+      pickerThumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          pickerThumbs.forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          const src = thumb.getAttribute('data-src');
+          heroMainVideo.src = src;
+          heroMainVideo.play();
+        });
+      });
+
+      // Lightbox Logic
+      const lightbox = document.getElementById('lightbox');
+      const lbClose = document.getElementById('lb-close');
+      const lbMediaContainer = document.getElementById('lb-media-container');
+      const lbTitle = document.getElementById('lb-title');
+      const lbPrev = document.getElementById('lb-prev');
+      const lbNext = document.getElementById('lb-next');
+      const lbCommentsList = document.getElementById('lb-comments-list');
+      const lbCommentForm = document.getElementById('lb-comment-form');
+
+      let currentSectionItems = [];
+      let currentIndex = -1;
+      let currentMediaSrc = '';
+
+      // Bind click events to all gallery items
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function() {
+          let section = this.closest('.story-section');
+          
+          if (section) {
+            currentSectionItems = Array.from(section.querySelectorAll('.gallery-item'));
+            currentIndex = currentSectionItems.indexOf(this);
+            openLightbox(this);
+          }
+        });
+      });
+
+      function openLightbox(itemEl) {
+        document.body.classList.add('lightbox-open');
+        lightbox.classList.add('active');
+        updateLightboxContent();
+      }
+
+      function updateLightboxContent() {
+        const itemEl = currentSectionItems[currentIndex];
+        
+        // Try to get title from overlay, or fallback to a default
+        const titleEl = itemEl.querySelector('.overlay-title');
+        const title = titleEl ? titleEl.innerText : 'Showcase Video';
+        
+        const imgEl = itemEl.querySelector('img');
+        const videoEl = itemEl.querySelector('video');
+
+        // Clear existing media (except buttons)
+        const existingMedia = lbMediaContainer.querySelector('.lb-active-media');
+        if(existingMedia) existingMedia.remove();
+
+        let newMedia;
+        if (imgEl) {
+          newMedia = document.createElement('img');
+          newMedia.src = imgEl.src;
+          currentMediaSrc = imgEl.getAttribute('src');
+        } else if (videoEl) {
+          newMedia = document.createElement('video');
+          newMedia.src = videoEl.src;
+          newMedia.autoplay = true;
+          newMedia.loop = true;
+          newMedia.muted = true;
+          newMedia.playsInline = true;
+          newMedia.controls = true;
+          currentMediaSrc = videoEl.getAttribute('src');
+        }
+
+        newMedia.classList.add('lb-active-media');
+        lbMediaContainer.insertBefore(newMedia, lbNext);
+        lbTitle.innerText = title;
+
+        loadComments(currentMediaSrc);
+      }
+
+      function closeLightbox() {
+        document.body.classList.remove('lightbox-open');
+        lightbox.classList.remove('active');
+        const existingMedia = lbMediaContainer.querySelector('.lb-active-media');
+        if(existingMedia) existingMedia.remove(); // Stop video playback
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lbMediaContainer) closeLightbox();
+      });
+
+      lbPrev.addEventListener('click', () => {
+        if (currentIndex > 0) { currentIndex--; updateLightboxContent(); }
+        else { currentIndex = currentSectionItems.length - 1; updateLightboxContent(); } // loop
+      });
+
+      lbNext.addEventListener('click', () => {
+        if (currentIndex < currentSectionItems.length - 1) { currentIndex++; updateLightboxContent(); }
+        else { currentIndex = 0; updateLightboxContent(); } // loop
+      });
+
+      // Commenting Logic (LocalStorage Mock)
+      function loadComments(mediaId) {
+        lbCommentsList.innerHTML = '';
+        const commentsStr = localStorage.getItem('comments_' + mediaId);
+        if (commentsStr) {
+          const comments = JSON.parse(commentsStr);
+          if (comments.length === 0) {
+            lbCommentsList.innerHTML = '<p class="no-comments">No comments yet. Be the first to share your thoughts!</p>';
+          } else {
+            comments.forEach(c => {
+              const div = document.createElement('div');
+              div.className = 'comment';
+              div.innerHTML = `<div class="comment-email">${escapeHtml(c.email)}</div><div class="comment-text">${escapeHtml(c.text)}</div>`;
+              lbCommentsList.appendChild(div);
+            });
+          }
+        } else {
+          lbCommentsList.innerHTML = '<p class="no-comments">No comments yet. Be the first to share your thoughts!</p>';
+        }
+      }
+
+      lbCommentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('comment-email').value;
+        const text = document.getElementById('comment-text').value;
+
+        let comments = [];
+        const commentsStr = localStorage.getItem('comments_' + currentMediaSrc);
+        if (commentsStr) comments = JSON.parse(commentsStr);
+
+        comments.push({ email, text });
+        localStorage.setItem('comments_' + currentMediaSrc, JSON.stringify(comments));
+
+        document.getElementById('comment-text').value = '';
+        loadComments(currentMediaSrc);
+        
+        // Scroll to bottom
+        lbCommentsList.scrollTop = lbCommentsList.scrollHeight;
+      });
+
+      function escapeHtml(unsafe) {
+        return unsafe
+             .replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;");
+      }
+
+      // PDF Autoscroll Logic
+      const pdfViewer = document.getElementById('pdf-viewer');
+      if (pdfViewer) {
+        let autoScrollSpeed = 1; // pixels per frame
+        let isAutoScrolling = true;
+        let scrollReq;
+
+        function autoScroll() {
+          if (!isAutoScrolling) return;
+          pdfViewer.scrollTop += autoScrollSpeed;
+          
+          // Loop logic: if we reached the bottom, reset to top
+          if (pdfViewer.scrollTop + pdfViewer.clientHeight >= pdfViewer.scrollHeight - 1) {
+            pdfViewer.scrollTop = 0;
+          }
+          
+          scrollReq = requestAnimationFrame(autoScroll);
+        }
+        
+        // Start scrolling
+        scrollReq = requestAnimationFrame(autoScroll);
+
+        // Stop on user interaction
+        const stopScroll = () => {
+          if (isAutoScrolling) {
+            isAutoScrolling = false;
+            cancelAnimationFrame(scrollReq);
+          }
+        };
+
+        pdfViewer.addEventListener('wheel', stopScroll, { passive: true });
+        pdfViewer.addEventListener('touchstart', stopScroll, { passive: true });
+        pdfViewer.addEventListener('mousedown', stopScroll, { passive: true });
+      }
+    });
+  </script>
+</body>
+</html>
