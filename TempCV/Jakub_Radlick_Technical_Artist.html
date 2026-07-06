@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { margin: 0; size: A4; }
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Roboto:wght@300;400;700&display=swap');
+  body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 15px 40px; font-size: 13px;
+    line-height: 1.35;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  header {
+    border-bottom: 2px solid #ff003c;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .profile-icon {
+    width: 65px; height: 65px;
+    background-color: #1f2833;
+    border: 2px solid #ff003c;
+    border-radius: 50%;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff003c;
+    font-size: 24px;
+    font-family: 'Rajdhani', sans-serif;
+  }
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    color: #ff003c;
+    font-weight: 700;
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  .contact {
+    font-size: 13px;
+    color: #888;
+    margin-top: 5px;
+  }
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    border-left: 4px solid #ff003c;
+    padding-left: 10px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 17px;
+  }
+  .job-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  .date {
+    color: #ff003c;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  ul {
+    padding-left: 20px;
+    margin-top: 5px;
+  }
+  li {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .skill-tag {
+    background-color: #1f2833;
+    border: 1px solid #ff003c;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="profile-icon">JR</div>
+    <div>
+      <h1>Jakub Radlicki</h1>
+      <div class="subtitle">Lead Technical Artist | Pipeline Architecture & Mentorship</div>
+      <div class="contact"><strong>Portfolio: <a href="https://drive.google.com/file/d/1gTtNAei0mgtCC9svRVG3YNhYPTQRis0o/view?usp=drive_link" style="color: #ff003c; text-decoration: underline;">View Portfolio</a></strong> | Email: <a href="mailto:architecturedesigns.pl@gmail.com" style="color: inherit; text-decoration: underline;">architecturedesigns.pl@gmail.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/jakub-radlicki/" style="color: inherit; text-decoration: underline;">jakub-radlicki</a> | Born: 2002.06.09 | Poland</div>
+      <div class="contact" style="margin-top: 5px;"><strong>Video Showcases:</strong> <a href="https://youtu.be/KFWRm2u8tik" target="_blank" style="color: inherit; text-decoration: underline;">Showcase 1</a> | <a href="https://youtu.be/Lfbw1Liv6DI" target="_blank" style="color: inherit; text-decoration: underline;">Showcase 2</a> | <a href="https://youtu.be/MV2XrAhJcRQ" target="_blank" style="color: inherit; text-decoration: underline;">Showcase 3</a></div>
+    </div>
+  </header>
+
+  <h2>Profile Summary</h2>
+  <p style="font-size: 13px;">I consider myself a strategic problem solver who focuses on unblocking creative teams. While studying architecture, I completely taught myself technical art, graphics programming, and pipeline automation. I'm used to diving into the deep end—whether that means building standalone rendering engines from scratch in C++ or setting up unrestricted n8n automations to speed up iteration times. I really enjoy taking complex shader math and explaining it simply to non-technical artists, and I'm always looking to mentor junior staff so the whole team gets stronger technically.</p>
+
+  <h2>Experience</h2>
+  
+  <div class="job-title">Lead Technical Artist / Pipeline Architect</div>
+  <div class="date">Freelance & Independent Clients | 2020 - Present</div>
+  <ul>
+    <li>Streamlined production pipelines for luxury carpentry clients by developing custom 3D generators, shaders, and advanced visualisations.</li>
+    <li>Collaborated closely with architects and civil engineers to architect a faster, unified multi-brand workflow.</li>
+    <li>Set up logic-driven batch rendering pipelines that automatically swap out materials and cameras for hundreds of meshes.</li>
+    <li>Built a custom infinite ocean shader that handles overwater and underwater transitions seamlessly.</li>
+    <li>Put together complex mathematical shaders using things like RVT blending, POM, and frustum-culling.</li>
+    <li>Wrote my own standalone rendering engine from scratch using C++ and Vulkan.</li>
+    <li>Took a massive 50-million polygon photogrammetry scan and baked it down to a 35k asset that runs perfectly in-browser.</li>
+    <li>Scripted out procedural generation tools using Python and nodes to completely automate structural modeling tasks.</li>
+  </ul>
+
+  <div class="job-title">Architectural Intern / Technical Tool Developer</div>
+  <div class="date">J7 | 2025 - 2026</div>
+  <ul>
+    <li>Expanded the functionality of existing CAD software (Vectorworks) by developing complex scripts for demolition maps, custom Voronoi pattern creation, and automated reporting.</li>
+    <li>Stepped up as a technical mentor within the team, actively teaching coworkers advanced mechanics and efficient workflows in Vectorworks.</li>
+    <li>Successfully delivered three comprehensive building inventory projects while balancing custom tool development.</li>
+  </ul>
+
+  <div class="job-title">Technical Artist</div>
+  <div class="date">3ngage | 2024 - 2026</div>
+  <ul>
+    <li>Delivered high-end product animations by building fully custom, self-made fluid simulation pipelines for realistic water generation.</li>
+    <li>Consistently delivered heavily optimized, topologically sound assets under strict production deadlines.</li>
+  </ul>
+
+  <div class="job-title">Technical Artist</div>
+  <div class="date">Modus | 2022 - 2023</div>
+  <ul>
+    <li>Delivered complex rendering, shading, and model generation pipelines for high-end jewelry brands and luxury e-commerce platforms in the UK and Australia.</li>
+    <li>Took the lead in mentoring and training two 3D artists, teaching them how to fully leverage Blender alongside my custom Python pipelines to maximize their efficiency and output quality.</li>
+  </ul>
+
+  <h2>Education</h2>
+  <div class="job-title">Bachelor of Architecture</div>
+  <div class="date">Warsaw University of Technology | 2021 - 2026</div>
+  <ul>
+    <li>Founded and led "Blender Knights," a mentorship program where I taught numerous students how to use Blender from the ground up, earning the campus nickname "The Blender Guy."</li>
+    <li>Led and coordinated multiple student teams in the creation of large-scale topographical and urban map projects.</li>
+    <li>Discovered a strong passion for teaching complex technical skills, regularly mentoring peers in Unreal Engine 5, Rhino, Grasshopper, and advanced Blender mechanics.</li>
+    <li>Utilized deep architectural knowledge to guide the structural integrity and realism of procedural asset generation tools.</li>
+  </ul>
+
+  <h2>Technical & Leadership Skills</h2>
+  <div class="skills-container">
+    <div class="skill-tag">Technical Mentorship</div>
+    <div class="skill-tag">Pipeline Automation (n8n/Python)</div>
+    <div class="skill-tag">Engine Architecture (C++/Vulkan)</div>
+    <div class="skill-tag">Unreal Engine 5</div>
+    <div class="skill-tag">Advanced Shader Math</div>
+    <div class="skill-tag">Cross-Discipline Mediation</div>
+  </div>
+
+  <h2 style="margin-top: 15px; font-size: 16px; border-left: 2px solid #888; color: #aaa;">Skills</h2>
+  <div style="font-size: 11px; color: #888; line-height: 1.4; text-align: justify; padding: 10px; background-color: rgba(255, 255, 255, 0.03); border: 1px solid #1f2833; border-radius: 4px;">
+    <strong>3D Modeling, Sculpting & Texturing:</strong> Blender, Nomad, Mudbox, Houdini, Autodesk Maya, Quixel Mixer.<br>
+    <strong>Engines & Rendering:</strong> Unreal Engine 5 (UE5), Unity, Godot, Vulkan API, OpenGL, V-Ray, Cycles, Eevee.<br>
+    <strong>CAD, Architecture & Parametric:</strong> AutoCAD, Vectorworks, Revit, Rhinoceros 3D, Grasshopper, SketchUp, Archicad, Robot, Rmwin, Enscape, D5.<br>
+    <strong>Development, Version Control & Automation:</strong> C++, Python, C#, HLSL, GLSL, SPIR-V, JavaScript, Git, GitHub, Docker, n8n, CMake, Visual Studio, VS Code.<br>
+    <strong>Compositing, Video & Motion Graphics:</strong> DaVinci Resolve, Blender Compositor.<br>
+    <strong>UI/UX, Web & 2D Design:</strong> Spline 3D, Affinity, Figma, Photoshop, Illustrator, Lightroom, CorelDRAW.
+  </div>
+</div>
+</body>
+</html>
+
+
