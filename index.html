@@ -58,6 +58,7 @@
 
     /* Top Bar & Navbar */
     .top-bar { 
+
       position: sticky; top: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center; 
       padding: 15px 40px; 
@@ -117,7 +118,7 @@
     .hero-bio { font-size: 1.25rem; font-weight: 300; color: #d4d4d8; max-width: 800px; margin-bottom: 80px; }
 
     /* Hero Player & Picker */
-    .hero-player-container { margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .hero-player-container { margin-top: 60px; margin-bottom: 60px; max-width: 1600px; width: 100%; margin-left: auto; margin-right: auto; }
     .hero-main-player { width: 100%; aspect-ratio: 16/9; background: #000; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
     .hero-main-player video { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 4px; }
     
@@ -348,6 +349,10 @@
       background: rgba(20,20,20,0.9); border-color: var(--accent);
       transform: translateY(-5px);
     }
+
+    
+    .about-placeholder { width: 300px; height: 300px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; }
+    @media (max-width: 768px) { .about-placeholder { width: 200px; height: 200px; } }
 
     /* Enlarge About Section */
     .about-section {
@@ -740,10 +745,10 @@
             if (aboutSection) aboutSection.style.display = 'flex';
             if (heroSection) { heroSection.style.display = 'none'; heroSection.classList.remove('no-video'); }
           } else if (isSelectedWorks) {
-            if (aboutSection) aboutSection.style.display = 'flex';
+            if (aboutSection) aboutSection.style.display = 'none';
             if (heroSection) { heroSection.style.display = 'flex'; heroSection.classList.remove('no-video'); }
             if (heroPlayerContainer) heroPlayerContainer.style.display = 'block';
-            if (heroProfilePic) heroProfilePic.style.display = 'none';
+            if (heroProfilePic) heroProfilePic.style.display = 'block';
             if (heroSubtitle) heroSubtitle.textContent = 'TECHNICAL ARTIST & ARCHITECT';
           } else {
             if (aboutSection) aboutSection.style.display = 'none';
