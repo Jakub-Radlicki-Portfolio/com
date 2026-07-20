@@ -94,7 +94,25 @@
 
     /* Hero Section */
     .hero { padding: 15vh 40px 10vh; max-width: 1400px; margin: 0 auto; text-align: left; }
-    .hero h1 { font-size: 4rem; font-weight: 500; color: var(--text-bright); letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
+    .hero-top-row {
+      display: flex; justify-content: space-between; align-items: center; width: 100%;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; text-align: left;
+    }
+    .hero-profile-pic img {
+      width: 150px; height: 150px; border-radius: 50%;
+      border: 3px solid var(--accent); object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hero.no-video { min-height: auto; padding-bottom: 40px; justify-content: flex-start; }
+    .hero.no-video .hero-top-row { margin-bottom: 0; }
+    @media (max-width: 768px) {
+      .hero-top-row { flex-direction: column; text-align: center; gap: 20px; }
+      .hero-text { text-align: center; }
+      .hero-profile-pic img { width: 100px; height: 100px; }
+    }
+    .hero-text h1 { font-size: 4rem; font-weight: 500; color: var(--text-bright); letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
     .hero p.subtitle { font-size: 1.1rem; color: var(--text-main); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
     .hero-bio { font-size: 1.25rem; font-weight: 300; color: #d4d4d8; max-width: 800px; margin-bottom: 80px; }
 
@@ -222,7 +240,25 @@
       .filter-container { gap: 15px; }
       
       .hero { padding: 8vh 20px 5vh; }
-      .hero h1 { font-size: 2.5rem; }
+    .hero-top-row {
+      display: flex; justify-content: space-between; align-items: center; width: 100%;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; text-align: left;
+    }
+    .hero-profile-pic img {
+      width: 150px; height: 150px; border-radius: 50%;
+      border: 3px solid var(--accent); object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hero.no-video { min-height: auto; padding-bottom: 40px; justify-content: flex-start; }
+    .hero.no-video .hero-top-row { margin-bottom: 0; }
+    @media (max-width: 768px) {
+      .hero-top-row { flex-direction: column; text-align: center; gap: 20px; }
+      .hero-text { text-align: center; }
+      .hero-profile-pic img { width: 100px; height: 100px; }
+    }
+      .hero-text h1 { font-size: 2.5rem; }
       .hero-bio { font-size: 1.1rem; margin-bottom: 40px; }
       
       main { padding: 20px; }
@@ -377,8 +413,20 @@
     </div>
   </section>
   <header class="hero">
-    <h1>Jakub Radlicki</h1>
-    <p class="subtitle">Technical Artist & Architect</p>
+    <div class="hero-top-row">
+      <div class="hero-text">
+        <h1>Jakub Radlicki</h1>
+        <p class="subtitle">Technical Artist & Architect</p>
+      </div>
+      <div class="hero-profile-pic" style="display: none;">
+        <img src="Portfolio Photos/profile.jpg" alt="Jakub Radlicki">
+      </div>
+    </div>
+      </div>
+      <div class="hero-profile-pic" style="display: none;">
+        <img src="Portfolio Photos/profile.jpg" alt="Jakub Radlicki">
+      </div>
+    </div>
 
     
     <div class="hero-player-container">
@@ -679,17 +727,30 @@
           
 // Filter Logic Additions for About/Trust Icon
           const aboutSection = document.querySelector('.about-section');
-          const trustIcon = document.getElementById('trust-icon');
           const heroSection = document.querySelector('.hero');
           
-          if (filterValue === 'all' || filterValue === 'about-me') {
+          const heroPlayerContainer = document.querySelector('.hero-player-container');
+          const heroSubtitle = document.querySelector('.hero-text .subtitle');
+          const heroProfilePic = document.querySelector('.hero-profile-pic');
+
+          const isAboutMe = (filterValue === 'about-me');
+          const isSelectedWorks = (filterValue === 'all');
+
+          if (isAboutMe) {
             if (aboutSection) aboutSection.style.display = 'flex';
-            if (trustIcon) trustIcon.classList.remove('visible');
-            if (heroSection) heroSection.style.display = 'block';
+            if (heroSection) { heroSection.style.display = 'none'; heroSection.classList.remove('no-video'); }
+          } else if (isSelectedWorks) {
+            if (aboutSection) aboutSection.style.display = 'flex';
+            if (heroSection) { heroSection.style.display = 'flex'; heroSection.classList.remove('no-video'); }
+            if (heroPlayerContainer) heroPlayerContainer.style.display = 'block';
+            if (heroProfilePic) heroProfilePic.style.display = 'none';
+            if (heroSubtitle) heroSubtitle.textContent = 'TECHNICAL ARTIST & ARCHITECT';
           } else {
             if (aboutSection) aboutSection.style.display = 'none';
-            if (trustIcon) trustIcon.classList.add('visible');
-            if (heroSection) heroSection.style.display = 'none';
+            if (heroSection) { heroSection.style.display = 'flex'; heroSection.classList.add('no-video'); }
+            if (heroPlayerContainer) heroPlayerContainer.style.display = 'none';
+            if (heroProfilePic) heroProfilePic.style.display = 'block';
+            if (heroSubtitle) heroSubtitle.textContent = btn.textContent.toUpperCase();
           }
 
           sections.forEach(section => {
@@ -968,10 +1029,6 @@
 
 
   <!-- Trust Icon -->
-  <div id="trust-icon" class="trust-icon" title="Built by Jakub Radlicki">
-    <img src="Portfolio Photos/profile.jpg" alt="Jakub Radlicki">
-    <span>Jakub Radlicki</span>
-  </div>
 
 </body>
 </html>
