@@ -570,8 +570,21 @@
       const sections = document.querySelectorAll('.story-section');
       const emptyState = document.getElementById('empty-state');
 
+      const colorMap = {
+        'all': '#e53935',
+        'tech-artist': '#00d2ff',
+        '3d-artist': '#a1ff00',
+        'environment-artist': '#ffaa00',
+        'motion-graphics': '#b900ff'
+      };
+
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+          const filterValue = btn.getAttribute('data-filter');
+          if (colorMap[filterValue]) {
+            document.documentElement.style.setProperty('--accent', colorMap[filterValue]);
+          }
+
           // Custom 1.5s smooth scroll to top
           const startPosition = window.pageYOffset;
           const startTime = performance.now();
@@ -834,6 +847,40 @@
         pdfViewer.addEventListener('touchstart', stopScroll, { passive: true });
         pdfViewer.addEventListener('mousedown', stopScroll, { passive: true });
       }
+
+      // Mobile Scroll Collapse
+      let lastScrollY = window.scrollY;
+      const topBar = document.querySelector('.top-bar');
+      window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+          if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            topBar.classList.add('collapsed');
+          } else {
+            topBar.classList.remove('collapsed');
+          }
+        } else {
+          topBar.classList.remove('collapsed');
+        }
+        lastScrollY = window.scrollY;
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.gallery-item, .story-section, .about-section').forEach(el => {
+        if (!el.classList.contains('story-section') && !el.classList.contains('about-section')) {
+           el.classList.add('fade-in-up');
+        }
+        observer.observe(el);
+      });
     });
   </script>
 </body>
