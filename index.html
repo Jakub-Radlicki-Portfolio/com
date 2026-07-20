@@ -321,7 +321,32 @@
     .profile-pic { width: 300px; height: 300px; }
     .about-content h2 { font-size: 3.5rem; margin-bottom: 30px; }
     .about-content p { font-size: 1.25rem; line-height: 1.8; }
+
+    /* Category Banner */
+    .category-banner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 40px 60px; background: var(--bg-alt);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 60px;
+    }
+    .banner-text h2 {
+      font-size: 2.5rem; color: var(--text-bright); margin-bottom: 5px;
+    }
+    .banner-text p {
+      font-size: 0.9rem; letter-spacing: 2px; color: var(--accent);
+      text-transform: uppercase; font-weight: 500;
+    }
+    .banner-image img {
+      width: 80px; height: 80px; border-radius: 50%;
+      border: 3px solid var(--accent); object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      .category-banner { padding: 30px; }
+      .banner-text h2 { font-size: 2rem; }
+      .banner-image img { width: 60px; height: 60px; }
+    }
 </style>
+
 
 </head>
 <body>
@@ -383,7 +408,19 @@
 
   <main>
     <!-- PROJECT 1 -->
-    <section class="story-section" data-categories="tech-artist,environment-artist">
+    
+  <!-- Dynamic Category Banner -->
+  <section id="category-banner" class="category-banner" style="display: none;">
+    <div class="banner-text">
+      <h2>Jakub Radlicki</h2>
+      <p id="banner-subtitle">TECHNICAL ARTIST</p>
+    </div>
+    <div class="banner-image">
+      <img src="Portfolio Photos/profile.jpg" alt="Jakub Radlicki">
+    </div>
+  </section>
+
+  <section class="story-section" data-categories="tech-artist,environment-artist">
       <div class="story-header">
         <div class="story-title"><h2>Procedural Generation & Automation</h2><div class="story-tags"><span class="tag">Technical Artist</span><span class="tag">Environment Artist and Architect</span></div></div>
         <div class="story-narrative"><p><strong>Scaling environments requires smart tools, not manual labor.</strong> I scripted out procedural generation tools using Python and Geometry Nodes to completely automate structural modeling tasks. By applying my architectural background to game engines, I ensure structural integrity in randomized assets.</p><p>I also set up logic-driven batch rendering pipelines that automatically swap out materials and cameras for hundreds of meshes, saving studios countless hours of manual iteration.</p></div>
