@@ -238,7 +238,54 @@
       footer { padding: 40px 20px; gap: 30px; }
       .footer-left h2 { font-size: 1.5rem; }
     }
-  </style>
+  
+    /* Mobile Menu Scroll Collapse */
+    .top-bar { transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background 0.4s ease; }
+    .top-bar.collapsed { transform: translateY(-100%); }
+
+    /* About Me Section */
+    .about-section {
+      max-width: 1400px; margin: 0 auto 60px; padding: 40px;
+      display: flex; gap: 60px; align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+    }
+    .profile-pic-container {
+      flex: 0 0 250px;
+      position: relative;
+    }
+    .profile-pic {
+      width: 250px; height: 250px; border-radius: 50%;
+      object-fit: cover; border: 4px solid var(--bg-color);
+      box-shadow: 0 0 0 2px var(--accent), 0 20px 40px rgba(0,0,0,0.6);
+      transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s ease;
+    }
+    .profile-pic:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 0 0 4px var(--accent), 0 30px 50px rgba(0,0,0,0.8);
+    }
+    .about-content h2 {
+      font-size: 2.5rem; font-weight: 500; color: var(--text-bright);
+      margin-bottom: 20px; letter-spacing: -0.5px;
+    }
+    .about-content p {
+      font-size: 1.15rem; color: var(--text-main); font-weight: 300; margin-bottom: 20px;
+    }
+    .about-content p strong { color: var(--text-bright); font-weight: 400; }
+
+    /* Micro Animations */
+    .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .about-section { flex-direction: column; text-align: center; gap: 30px; padding: 30px 20px; }
+      .profile-pic-container { flex: 0 0 200px; }
+      .profile-pic { width: 200px; height: 200px; }
+      .about-content h2 { font-size: 2rem; }
+    }
+</style>
 </head>
 <body>
 
@@ -262,9 +309,7 @@
   <header class="hero">
     <h1>Jakub Radlicki</h1>
     <p class="subtitle">Technical Artist & Architect</p>
-    <div class="hero-bio">
-      <p>I am a strategic problem solver focused on unblocking creative teams. Originally studying Architecture, I taught myself technical art, graphics programming, and pipeline automation. I dive into the deep end—whether building standalone rendering engines from scratch in C++ or setting up unrestricted automations. I specialize in taking complex shader math and explaining it simply, pushing the limits of real-time performance and visual fidelity.</p>
-    </div>
+
     
     <div class="hero-player-container">
       <div class="hero-main-player">
@@ -284,6 +329,18 @@
       </div>
     </div>
   </header>
+
+  <section class="about-section fade-in-up">
+    <div class="profile-pic-container">
+      <img src="Portfolio Photos/profile.jpg" alt="Jakub Radlicki" class="profile-pic">
+    </div>
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>Hi, I'm <strong>Jakub Radlicki</strong>. This is my personal portfolio, showcasing everything I've built, modeled, and engineered from the ground up.</p>
+      <p>I am a strategic problem solver focused on unblocking creative teams. Originally studying Architecture, I taught myself technical art, graphics programming, and pipeline automation. I dive into the deep end—whether building standalone rendering engines from scratch in C++ or setting up unrestricted automations. I specialize in taking complex shader math and explaining it simply, pushing the limits of real-time performance and visual fidelity.</p>
+    </div>
+  </section>
+
 
   <main>
     <!-- PROJECT 1 -->
