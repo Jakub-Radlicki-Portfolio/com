@@ -196,6 +196,7 @@
       display: flex; flex-direction: column; padding: 30px;
     }
     
+    .lb-desc { font-size: 0.95rem; color: #ccc; margin-bottom: 20px; margin-top: 5px; line-height: 1.5; font-weight: 300; display: none; }
     .lb-title { font-size: 1.5rem; font-weight: 400; color: #fff; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
     
     .lb-comments-list { flex: 1; overflow-y: auto; margin-bottom: 20px; padding-right: 10px; }
@@ -674,6 +675,7 @@
       </div>
       <div class="lb-sidebar">
         <h3 class="lb-title" id="lb-title">Project Details</h3>
+        <p class="lb-desc" id="lb-desc"></p>
         <div class="lb-comments-list" id="lb-comments-list">
           <!-- Comments inserted here -->
         </div>
@@ -849,6 +851,9 @@
         const titleEl = itemEl.querySelector('.overlay-title');
         const title = titleEl ? titleEl.innerText : 'Showcase Video';
         
+        const descEl = itemEl.querySelector('.overlay-desc');
+        const desc = descEl ? descEl.innerText : '';
+        
         const imgEl = itemEl.querySelector('img');
         const videoEl = itemEl.querySelector('video');
         const iframeEl = itemEl.querySelector('iframe');
@@ -884,6 +889,11 @@
         newMedia.classList.add('lb-active-media');
         lbMediaContainer.insertBefore(newMedia, lbNext);
         lbTitle.innerText = title;
+        const lbDesc = document.getElementById('lb-desc');
+        if (lbDesc) {
+          lbDesc.innerText = desc;
+          lbDesc.style.display = desc ? 'block' : 'none';
+        }
 
         loadComments(currentMediaSrc);
       }
