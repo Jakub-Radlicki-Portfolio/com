@@ -790,7 +790,7 @@
               setTimeout(() => { if (section.classList.contains('hiding')) section.classList.add('hidden'); }, 800);
             }
           });
-          if (visibleCount === 0) { setTimeout(() => { emptyState.style.display = 'block'; }, 800); } 
+          if (visibleCount === 0 && !isAboutMe) { setTimeout(() => { emptyState.style.display = 'block'; }, 800); } 
           else { emptyState.style.display = 'none'; }
         });
       });
