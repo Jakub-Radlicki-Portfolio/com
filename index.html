@@ -743,13 +743,13 @@
             if (heroSection) { heroSection.style.display = 'none'; heroSection.classList.remove('no-video'); }
           } else if (isSelectedWorks) {
             if (aboutSection) aboutSection.style.display = 'none';
-            if (heroSection) { heroSection.style.display = 'flex'; heroSection.classList.remove('no-video'); }
+            if (heroSection) { heroSection.style.display = 'block'; heroSection.classList.remove('no-video'); }
             if (heroPlayerContainer) heroPlayerContainer.style.display = 'block';
             if (heroProfilePic) heroProfilePic.style.display = 'block';
             if (heroSubtitle) heroSubtitle.textContent = 'TECHNICAL ARTIST & ARCHITECT';
           } else {
             if (aboutSection) aboutSection.style.display = 'none';
-            if (heroSection) { heroSection.style.display = 'flex'; heroSection.classList.add('no-video'); }
+            if (heroSection) { heroSection.style.display = 'block'; heroSection.classList.add('no-video'); }
             if (heroPlayerContainer) heroPlayerContainer.style.display = 'none';
             if (heroProfilePic) heroProfilePic.style.display = 'block';
             if (heroSubtitle) heroSubtitle.textContent = btn.textContent.toUpperCase();
