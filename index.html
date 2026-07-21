@@ -162,6 +162,13 @@
     .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.04); filter: brightness(1) grayscale(0%); }
     .overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); opacity: 0; transition: opacity 0.4s ease;  }
     .gallery-item:hover .overlay { opacity: 1; }
+    .overlay-title {
+      font-size: 1.25rem; font-weight: 600; margin-bottom: 5px;
+    }
+    .overlay-desc {
+      font-size: 0.9rem; font-weight: 300; opacity: 0.9; line-height: 1.4; margin-top: 8px;
+    }
+    /* fallback just in case */
     .overlay-title { font-size: 0.9rem; color: #fff; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
     .empty-state { text-align: center; padding: 100px; color: var(--text-muted); font-size: 1.2rem; display: none; font-weight: 300; }
 
@@ -465,15 +472,15 @@
       </div>
       <div class="gallery">
         <!-- Featured Animation -->
-        <div class="gallery-item"><iframe src="https://www.youtube.com/embed/Lfbw1Liv6DI?autoplay=1&mute=1&loop=1&playlist=Lfbw1Liv6DI&controls=1&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" style="width:100%; height:100%; "></iframe><div class="overlay"><div class="overlay-title">CadScape Modeler</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/tile maker 4.png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Tile Generator Tool</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/container 1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Parametric Container Generation</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/stairs (2).png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Stairway Algorithms</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/furniture.png" loading="lazy"><div class="overlay"><div class="overlay-title">Modular Furniture Toolset</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/grass.png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Grass Generation</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/container internal node.png" loading="lazy"><div class="overlay"><div class="overlay-title">Geometry Nodes Graph</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/rings/batch ring rendering.png" loading="lazy"><div class="overlay"><div class="overlay-title">Programmatic Batch Output Grid</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/rings/2.3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automated Material Instancing</div></div></div>
+        <div class="gallery-item"><iframe src="https://www.youtube.com/embed/Lfbw1Liv6DI?autoplay=1&mute=1&loop=1&playlist=Lfbw1Liv6DI&controls=1&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" style="width:100%; height:100%; "></iframe><div class="overlay"><div class="overlay-title">CadScape Modeler</div><div class="overlay-desc">A robust tool utilizing logic-driven systems to rapidly generate customizable environments.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/tile maker 4.png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Tile Generator Tool</div><div class="overlay-desc">Automated generation of intricate tiling patterns with randomized wear and variation.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/container 1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Parametric Container Generation</div><div class="overlay-desc">A procedural system capable of constructing varied industrial containers from modular parameters.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/stairs (2).png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Stairway Algorithms</div><div class="overlay-desc">A rule-based algorithm that automatically calculates steps, railings, and structural supports.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/furniture.png" loading="lazy"><div class="overlay"><div class="overlay-title">Modular Furniture Toolset</div><div class="overlay-desc">A script-driven workflow for generating vast catalogs of furniture pieces from core components.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/grass.png" loading="lazy"><div class="overlay"><div class="overlay-title">Procedural Grass Generation</div><div class="overlay-desc">A noise-driven ecosystem generator that places realistic foliage while optimizing performance.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/Blender Geometry nodes/container internal node.png" loading="lazy"><div class="overlay"><div class="overlay-title">Geometry Nodes Graph</div><div class="overlay-desc">The underlying visual programming logic that powers complex procedural modeling tools.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/rings/batch ring rendering.png" loading="lazy"><div class="overlay"><div class="overlay-title">Programmatic Batch Output Grid</div><div class="overlay-desc">Automated pipeline for rendering hundreds of product variations without manual intervention.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/rings/2.3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automated Material Instancing</div><div class="overlay-desc">A shader network capable of systematically swapping textures and properties for mass production.</div></div></div>
       </div>
     </section>
 
@@ -508,7 +515,7 @@
         <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website wireframe 1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Watch Wireframe 1</div></div></div>
         <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website wireframe 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">Watch Wireframe 2</div></div></div>
         <div class="gallery-item"><img src="s0001.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automotive Render 1</div></div></div>
-        <div class="gallery-item"><img src="s0002.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automotive Render 2</div></div></div>
+        <div class="gallery-item"><img src="s0002.png" loading="lazy"><div class="overlay"><div class="overlay-title">Automotive Render 2</div><div class="overlay-desc">High-fidelity automotive render showcasing advanced lighting and shader networks for realistic car paint.</div></div></div>
       </div>
     </section>
 
@@ -519,12 +526,12 @@
         <div class="story-narrative"><p><strong>Bringing designs to life through motion.</strong> I specialize in creating high-quality, physics-driven animations and motion graphics for commercial presentations. Whether it's complex product assembly animations or realistic fluid buoyancy, I focus on smooth, physically accurate motion.</p></div>
       </div>
       <div class="gallery">
-        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated diamond ring assembly.mov"></video><div class="overlay"><div class="overlay-title">Diamond Ring Assembly</div></div></div>
-        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated heating mat assembly.mp4"></video><div class="overlay"><div class="overlay-title">Heating Mat Assembly</div></div></div>
-        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated website presentation on laptop.mp4"></video><div class="overlay"><div class="overlay-title">Website Presentation</div></div></div>
-        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated weighing scale.mp4"></video><div class="overlay"><div class="overlay-title">Weighing Scale Animation</div></div></div>
-        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated excel table.mov"></video><div class="overlay"><div class="overlay-title">Animated Excel Table</div></div></div>
-        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated water with boat buoyancy.mkv"></video><div class="overlay"><div class="overlay-title">Water Buoyancy Physics</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated diamond ring assembly.mov"></video><div class="overlay"><div class="overlay-title">Diamond Ring Assembly</div><div class="overlay-desc">A detailed macro animation illustrating the mechanical assembly of a fine jewelry piece.</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated heating mat assembly.mp4"></video><div class="overlay"><div class="overlay-title">Heating Mat Assembly</div><div class="overlay-desc">Technical product visualization demonstrating the internal components of a heating mat system.</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated website presentation on laptop.mp4"></video><div class="overlay"><div class="overlay-title">Website Presentation</div><div class="overlay-desc">A slick 3D showcase of UI/UX design integrated onto a photorealistic laptop screen.</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated weighing scale.mp4"></video><div class="overlay"><div class="overlay-title">Weighing Scale Animation</div><div class="overlay-desc">Industrial product animation emphasizing physical mechanisms and component interactions.</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated excel table.mov"></video><div class="overlay"><div class="overlay-title">Animated Excel Table</div><div class="overlay-desc">Motion graphics sequence turning complex spreadsheet data into an engaging 3D visualization.</div></div></div>
+        <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated water with boat buoyancy.mkv"></video><div class="overlay"><div class="overlay-title">Water Buoyancy Physics</div><div class="overlay-desc">Real-time fluid simulation and physics-based buoyancy calculations for a boat hull.</div></div></div>
       </div>
     </section>
 
@@ -537,11 +544,11 @@
       <div class="gallery">
         <!-- Featured Animation -->
         <div class="gallery-item"><video autoplay loop muted playsinline src="Portfolio Photos/Animations/Animated diamond ring assembly.mov"></video><div class="overlay"><div class="overlay-title">Diamond Ring Animation</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website  preview 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Photoreal Render</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website  preview 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Macro Detail</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Material Shading</div></div></div>
-        <div class="gallery-item"><img src="sf1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Hard Surface Vehicle Modeling</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/rings/Bez nazwy (4).png" loading="lazy"><div class="overlay"><div class="overlay-title">Commercial Render Output</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website  preview 2.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Photoreal Render</div><div class="overlay-desc">Studio-lighting setup focusing on metallic reflection fidelity and glass refraction.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website  preview 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Macro Detail</div><div class="overlay-desc">Extreme close-up revealing fine micro-scratches and procedural bump mapping on the dial.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/3d art/r watch for website 3.png" loading="lazy"><div class="overlay"><div class="overlay-title">Luxury Watch - Material Shading</div><div class="overlay-desc">Full-body rendering demonstrating complex multi-layered shaders and physical rendering.</div></div></div>
+        <div class="gallery-item"><img src="sf1.png" loading="lazy"><div class="overlay"><div class="overlay-title">Hard Surface Vehicle Modeling</div><div class="overlay-desc">Complex hard-surface modeling workflow for a sci-fi vehicle concept, featuring intricate mechanical detailing.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/rings/Bez nazwy (4).png" loading="lazy"><div class="overlay"><div class="overlay-title">Commercial Render Output</div><div class="overlay-desc">Final composited frame for a commercial jewelry campaign, balancing artistic mood with product clarity.</div></div></div>
       </div>
     </section>
 
@@ -627,15 +634,15 @@
         <div class="story-narrative"><p><strong>Spatial flow and functional aesthetics.</strong> Leveraging my architectural background, I design comprehensive interior layouts that focus on spatial flow, lighting, and materiality. These spaces are constructed to be both visually compelling and highly functional, bringing a high degree of realism to environment art.</p></div>
       </div>
       <div class="gallery">
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.1.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 1</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 2</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 3</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Layout</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Visualization</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Space Planning</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Material Study</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr4.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Render</div></div></div>
-        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr5.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 5</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.1.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 1</div><div class="overlay-desc">A modern interior visualization emphasizing natural lighting and warm material palettes.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 2</div><div class="overlay-desc">Architectural visualization showcasing open-plan spatial flow and contemporary furnishing.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr1.3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 3</div><div class="overlay-desc">Photorealistic render highlighting contrast between organic elements and structural geometry.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Layout</div><div class="overlay-desc">A holistic view of the interior space, demonstrating functional zoning and atmospheric lighting.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Visualization</div><div class="overlay-desc">Detailed room setup focusing on photoreal global illumination and physically based rendering.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.2.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Space Planning</div><div class="overlay-desc">Exploring volumetric proportions and light distribution in a high-end residential environment.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr3.3.jpeg" loading="lazy"><div class="overlay"><div class="overlay-title">Material Study</div><div class="overlay-desc">A close-up exploration of fabric, wood, and concrete textures under studio-like interior lighting.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr4.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Render</div><div class="overlay-desc">Final composited architectural shot balancing ambient occlusion, reflections, and mood.</div></div></div>
+        <div class="gallery-item"><img src="Portfolio Photos/interior design/interior nr5.jpg" loading="lazy"><div class="overlay"><div class="overlay-title">Interior Concept 5</div><div class="overlay-desc">An alternative lighting scenario exploring dusk/nighttime illumination setups.</div></div></div>
       </div>
     </section>
     
