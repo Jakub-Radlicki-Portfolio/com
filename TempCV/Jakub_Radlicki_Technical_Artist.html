@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+
+  @page { margin: 0; size: A4; }
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+  body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 40px 50px; 
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  header {
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .profile-icon {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    margin-right: 30px;
+    overflow: hidden;
+    border: 2px solid #58a6ff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+  }
+  .subtitle {
+    color: #58a6ff;
+    font-weight: 600;
+    margin-top: 4px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+  .contact {
+    font-size: 12.5px;
+    color: #8b949e;
+    margin-top: 10px;
+  }
+  .contact a {
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact a:hover { text-decoration: underline; }
+  
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background-color: #58a6ff;
+    margin-right: 12px;
+    border-radius: 2px;
+  }
+  
+  .job-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 15px;
+  }
+  .date {
+    color: #8b949e;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  ul {
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+  li {
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    color: #c9d1d9;
+  }
+  li strong { color: #ffffff; font-weight: 600; }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  .skill-tag {
+    background-color: rgba(88, 166, 255, 0.08);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+    color: #79c0ff;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    border-radius: 20px;
+  }
+  .skills-text-box {
+    font-size: 13px; 
+    color: #c9d1d9; 
+    line-height: 1.7; 
+    text-align: left; 
+    padding: 18px; 
+    background-color: #161b22; 
+    border: 1px solid #30363d; 
+    border-radius: 8px;
+  }
+
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="profile-icon"><img src="../Portfolio Photos/profile.jpg" alt="Jakub Radlicki" style="width: 100%; height: 100%; object-fit: cover;"></div>
+    <div>
+      <h1>Jakub Radlicki</h1>
+      <div class="subtitle">Technical Artist | Procedural Generation & Rendering</div>
+      <div class="contact"><strong>Portfolio: <a href="https://jakub-radlicki-portfolio.github.io/com/" style="color: #ff003c; text-decoration: underline;">View Portfolio</a></strong> | Email: <a href="mailto:architecturedesigns.pl@gmail.com" style="color: inherit; text-decoration: underline;">architecturedesigns.pl@gmail.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/jakub-radlicki/" style="color: inherit; text-decoration: underline;">jakub-radlicki</a> | Born: 2002.06.09 | Poland</div>
+      <div class="contact" style="margin-top: 5px;"><strong>Video Showcases:</strong> <a href="https://youtu.be/KFWRm2u8tik" target="_blank" style="color: inherit; text-decoration: underline;">Showcase 1</a> | <a href="https://youtu.be/Lfbw1Liv6DI" target="_blank" style="color: inherit; text-decoration: underline;">Showcase 2</a> | <a href="https://youtu.be/MV2XrAhJcRQ" target="_blank" style="color: inherit; text-decoration: underline;">Showcase 3</a></div>
+    </div>
+  </header>
+
+  <h2>Profile Summary</h2>
+  <p style="font-size: 13px;">I'm a 3D artist and tech enthusiast who loves bridging the gap between heavy math logic and great visuals. Most of my technical skills, like graphics programming and pipeline development, are completely self-taught alongside my architecture degree. I've built my own custom rendering engines using Vulkan and C++, set up massive procedural generation systems using Python and Geometry Nodes, and crushed 50-million polygon scans into lightweight real-time assets. I'm really passionate about pushing Unreal Engine 5 as far as it can go.</p>
+
+  <h2>Experience</h2>
+  
+  <div class="job-title">Technical Artist / Systems Developer</div>
+  <div class="date">Freelance (2020  Present) | Architekci i Drewno (2020.01  Present)</div>
+  <ul>
+    <li>Built a custom infinite ocean shader that handles overwater and underwater transitions seamlessly.</li>
+    <li>Put together complex mathematical shaders using things like RVT blending, POM, and frustum-culling.</li>
+    <li>Wrote my own standalone rendering engine from scratch using C++ and Vulkan.</li>
+    <li>Took a massive 50-million polygon photogrammetry scan and baked it down to a 35k asset that runs perfectly in-browser.</li>
+    <li>Scripted out procedural generation tools using Python and nodes to completely automate structural modeling tasks.</li>
+  </ul>
+
+  <div class="job-title">Contract 3D Artist & Technical Freelancer</div>
+  <div class="date">J7 (2025.10  2026.02) | 3ngage (2024.07  2024.09) | knwly (2022.01  2024.07)</div>
+  <ul>
+    <li>Set up logic-driven batch rendering pipelines that automatically swap out materials and cameras for hundreds of meshes.</li>
+    <li>Created custom shaders and optimized 3D assets for different studios while sticking strictly to their performance budgets.</li>
+    <li>Helped external studios figure out why their asset pipelines were choking and fixed them using procedural tools.</li>
+    <li>Handled high-end interior design layouts and modeled custom 3D furniture for a few commercial clients.</li>
+  </ul>
+
+  <h2>Education</h2>
+  <div class="job-title">Bachelor of Architecture</div>
+  <div class="date">WydziaÅ Architektury Politechniki Warszawskiej | Expected Graduation: Summer 2026</div>
+  <ul>
+    <li>Leveraged architectural data and geometry systems to enhance 3D pipelines, including implementing IFC data filtering to automate specific architectural parameter exports.</li>
+  </ul>
+
+  <h2>Technical Skills</h2>
+  <div class="skills-container">
+    <div class="skill-tag">Unreal Engine 5</div>
+    <div class="skill-tag">Blender (Geometry Nodes)</div>
+    <div class="skill-tag">C++ / Python</div>
+    <div class="skill-tag">Vulkan / GLSL / HLSL</div>
+    <div class="skill-tag">Procedural Content Generation (PCG)</div>
+    <div class="skill-tag">Extreme Optimization</div>
+    <div class="skill-tag">Shader Development</div>
+  </div>
+
+  <h2>Software & Tools</h2>
+  <div class="skills-text-box">
+    <strong>3D Modeling, Sculpting & Texturing:</strong> Blender, Nomad, Mudbox, Houdini, Autodesk Maya, Quixel Mixer.<br>
+    <strong>Engines & Rendering:</strong> Unreal Engine 5 (UE5), Unity, Godot, Vulkan API, OpenGL, V-Ray, Cycles, Eevee.<br>
+    <strong>CAD, Architecture & Parametric:</strong> AutoCAD, Vectorworks, Revit, Rhinoceros 3D, Grasshopper, SketchUp, Archicad, Robot, Rmwin, Enscape, D5.<br>
+    <strong>Development, Version Control & Automation:</strong> C++, Python, C#, HLSL, GLSL, SPIR-V, JavaScript, Git, GitHub, Docker, n8n, CMake, Visual Studio, VS Code.<br>
+    <strong>Compositing, Video & Motion Graphics:</strong> DaVinci Resolve, Blender Compositor.<br>
+    <strong>UI/UX, Web & 2D Design:</strong> Spline 3D, Affinity, Figma, Photoshop, Illustrator, Lightroom, CorelDRAW.
+  </div>
+</div>
+</body>
+</html>
+
+
+

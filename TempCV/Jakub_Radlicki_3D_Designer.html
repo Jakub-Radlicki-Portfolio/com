@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+
+  @page { margin: 0; size: A4; }
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+  body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 40px 50px; 
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+  }
+  header {
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .profile-icon {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    margin-right: 30px;
+    overflow: hidden;
+    border: 2px solid #58a6ff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+  }
+  .subtitle {
+    color: #58a6ff;
+    font-weight: 600;
+    margin-top: 4px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+  .contact {
+    font-size: 12.5px;
+    color: #8b949e;
+    margin-top: 10px;
+  }
+  .contact a {
+    color: #58a6ff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact a:hover { text-decoration: underline; }
+  
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background-color: #58a6ff;
+    margin-right: 12px;
+    border-radius: 2px;
+  }
+  
+  .job-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 15px;
+  }
+  .date {
+    color: #8b949e;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  ul {
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+  li {
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    color: #c9d1d9;
+  }
+  li strong { color: #ffffff; font-weight: 600; }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  .skill-tag {
+    background-color: rgba(88, 166, 255, 0.08);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+    color: #79c0ff;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    border-radius: 20px;
+  }
+  .skills-text-box {
+    font-size: 13px; 
+    color: #c9d1d9; 
+    line-height: 1.7; 
+    text-align: left; 
+    padding: 18px; 
+    background-color: #161b22; 
+    border: 1px solid #30363d; 
+    border-radius: 8px;
+  }
+
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="profile-icon"><img src="../Portfolio Photos/profile.jpg" alt="Jakub Radlicki" style="width: 100%; height: 100%; object-fit: cover;"></div>
+    <div>
+      <h1>Jakub Radlicki</h1>
+      <div class="subtitle">3D Motion Designer | High-End Rendering & Web Integration</div>
+      <div class="contact"><strong>Portfolio: <a href="https://jakub-radlicki-portfolio.github.io/com/" style="color: #ff003c; text-decoration: underline;">View Portfolio</a></strong> | Email: <a href="mailto:architecturedesigns.pl@gmail.com" style="color: inherit; text-decoration: underline;">architecturedesigns.pl@gmail.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/jakub-radlicki/" style="color: inherit; text-decoration: underline;">jakub-radlicki</a> | Born: 2002.06.09 | Poland</div>
+    </div>
+  </header>
+
+  <h2>Profile Summary</h2>
+  <p style="font-size: 13.5px; color: #333333;">I'm a self-taught 3D Designer focused on creating super optimized, high-end digital assets for modern tech and finance platforms. I love combining fluid simulations, SDFs, and heavy rendering math to make motion graphics that really stand out while sticking to brand guidelines. I'm obsessed with pipeline speedâI've built rendering setups that cut turnaround times down to under 30 minutes. Lately, I've also been doing a lot of work integrating interactive 3D elements directly into live websites using Spline and JavaScript.</p>
+
+  <h2>Experience</h2>
+  
+  <div class="job-title">3D Designer & Web Integrator</div>
+  <div class="date">Freelance (2020  Present) | Architekci i Drewno (2020.01  Present)</div>
+  <ul>
+    <li>Put together a fully interactive 3D web experience using Spline and JS, getting dynamic assets running smoothly in the browser.</li>
+    <li>Created highly optimized 3D assets and stylized environments that have perfect topology for real-time web rendering.</li>
+    <li>Wrote some complex math shaders using GLSL and nodes to drive abstract motion graphics and web backgrounds.</li>
+    <li>Set up complete automation pipelines using n8n and LLMs to handle data processing and web scraping for me.</li>
+  </ul>
+
+  <div class="job-title">Contract 3D Designer</div>
+  <div class="date">J7 (2025.10  2026.02) | 3ngage (2024.07  2024.09) | knwly (2022.01  2024.07)</div>
+  <ul>
+    <li>Worked with design studios and B2B clients to make high-end product renders and motion graphics that matched their exact branding.</li>
+    <li>Built out a logic-driven automation pipeline that lets me crank out hundreds of product renders by dynamically swapping cameras and materials.</li>
+    <li>Made custom corporate branding packages, making sure the 2D graphics and 3D work shared the same visual language.</li>
+    <li>Designed interior layouts and modeled custom 3D furniture for commercial spaces.</li>
+  </ul>
+
+  <div class="job-title">Technical Art Director (Academic Peer Mentorship)</div>
+  <div class="date">WydziaÅ Architektury Politechniki Warszawskiej | 2023 - Present</div>
+  <ul>
+    <li>Helped out my peers and junior artists at university by teaching them how to standardize their 3D pipelines and fix software bugs to speed up their work.</li>
+  </ul>
+
+  <h2>Education</h2>
+  <div class="job-title">Bachelor of Architecture</div>
+  <div class="date">WydziaÅ Architektury Politechniki Warszawskiej | Expected Graduation: Summer 2026</div>
+  <ul>
+    <li>Applied rigorous structural geometry and parametric logic to digital 3D design systems.</li>
+  </ul>
+
+  <h2>Technical Skills</h2>
+  <div class="skills-container">
+    <div class="skill-tag">Web 3D Integration (Spline/JS)</div>
+    <div class="skill-tag">Premium Motion Graphics</div>
+    <div class="skill-tag">Blender / Houdini</div>
+    <div class="skill-tag">SDFs & Fluid Simulation</div>
+    <div class="skill-tag">Extreme Mesh Optimization</div>
+    <div class="skill-tag">Rapid Iteration Pipelines</div>
+    <div class="skill-tag">Brand Compliance</div>
+  </div>
+
+  <h2 style="margin-top: 15px; font-size: 15px; border-bottom: 1px solid #000; padding-bottom: 5px; color: #000;">Skills</h2>
+  <div class="skills-text-box">
+    <strong>3D Modeling, Sculpting & Texturing:</strong> Blender, Nomad, Mudbox, Houdini, Autodesk Maya, Quixel Mixer.<br>
+    <strong>Engines & Rendering:</strong> Unreal Engine 5 (UE5), Unity, Godot, Vulkan API, OpenGL, V-Ray, Cycles, Eevee.<br>
+    <strong>CAD, Architecture & Parametric:</strong> AutoCAD, Vectorworks, Revit, Rhinoceros 3D, Grasshopper, SketchUp, Archicad, Robot, Rmwin, Enscape, D5.<br>
+    <strong>Development, Version Control & Automation:</strong> C++, Python, C#, HLSL, GLSL, SPIR-V, JavaScript, Git, GitHub, Docker, n8n, CMake, Visual Studio, VS Code.<br>
+    <strong>Compositing, Video & Motion Graphics:</strong> DaVinci Resolve, Blender Compositor.<br>
+    <strong>UI/UX, Web & 2D Design:</strong> Spline 3D, Affinity, Figma, Photoshop, Illustrator, Lightroom, CorelDRAW.
+  </div>
+</div>
+</body>
+</html>
+
+
+
